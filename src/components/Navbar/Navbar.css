@@ -1,0 +1,151 @@
+/* ==============================================
+   ESTILO PRINCIPAL DA BARRA DE NAVEGAÇÃO
+============================================== */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1200px;
+  height: 75px;
+
+  /* ✅ FUNDO COM GRADIENTE ANIMADO SUAVE
+     Mesma ideia do botão, mas com transparência maior para ficar mais fraco */
+  background: linear-gradient(
+    135deg,
+    rgb(63, 236, 63),   /* Azul roxo bem transparente */
+    rgb(231, 6, 238)   /* Roxo transparente */
+  );
+  background-size: 200% 200%;   /* Tamanho maior para permitir a animação */
+  animation: gradienteSuave 8s ease infinite; /* Animação mais devagar e suave */
+
+  /* Efeito vidro já existente */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(120, 80, 255, 0.3);
+  border-radius: 16px;
+
+  box-shadow: 
+    0 0 15px rgba(120, 80, 255, 0.2),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  z-index: 999;
+}
+
+/* ✅ ANIMAÇÃO DO GRADIENTE SUAVE */
+@keyframes gradienteSuave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==============================================
+   LOGO
+============================================== */
+.navbar .logo {
+  height: 48px;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(120, 80, 255, 0.4));
+  transition: filter 0.3s ease;
+}
+
+.navbar .logo:hover {
+  filter: drop-shadow(0 0 10px rgba(120, 80, 255, 0.7));
+}
+
+/* ==============================================
+   MENU - ITENS LADO A LADO
+============================================== */
+.navbar .menu {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==============================================
+   LINKS - COR ROXA PADRÃO
+============================================== */
+.navbar .menu li a {
+  color: #070707;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Cor verde ao passar o mouse */
+.navbar .menu li a:hover {
+  color: #25d366;
+  text-shadow: 0 0 8px rgba(37, 211, 102, 0.6);
+}
+
+/* Linha abaixo do link - com duas cores */
+.navbar .menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+
+  /* ✅ Duas cores lado a lado: roxo + verde */
+  background: linear-gradient(90deg, #b812bd 0%, #25d366 100%);
+  box-shadow: 0 0 8px rgba(184, 18, 189, 0.5);
+
+  transition: width 0.3s ease;
+}
+
+/* Ao passar o mouse: linha cresce e brilha com as duas cores */
+.navbar .menu li a:hover::after {
+  width: 100%;
+  box-shadow: 
+    0 0 8px rgba(184, 18, 189, 0.6),
+    0 0 8px rgba(37, 211, 102, 0.6);
+}
+
+/* ==============================================
+   BOTÃO MATRICULE-SE
+============================================== */
+.botao-matricula {
+  padding: 0.7rem 1.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  background: linear-gradient(135deg, #30d027, #0e0d0e);
+  background-size: 200% 200%;
+  animation: gradienteBotao 4s ease infinite;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 0 12px rgba(120, 80, 255, 0.5),
+    inset 0 0 6px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+@keyframes gradienteBotao {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.botao-matricula:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 20px rgba(184, 18, 189, 0.7),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+  color: #ffffff !important;
+}
+
+.botao-matricula::after {
+  display: none;
+}

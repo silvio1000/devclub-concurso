@@ -1,0 +1,206 @@
+/* ==============================================
+   SEÇÃO: NOSSAS FORMAÇÕES
+   Estilo futurista, alinhado com o resto do site
+============================================== */
+
+/* Estilo geral da seção */
+.formacoes {
+  /* Cor de fundo escura, combinando com o tema */
+  background: #0a041a;
+  /* Espaçamento interno superior e inferior */
+  padding: 80px 20px;
+  /* Define contexto para elementos posicionados dentro */
+  position: relative;
+  /* Esconde qualquer conteúdo que ultrapasse os limites */
+  overflow: hidden;
+}
+
+/* Efeito de luz suave no fundo da seção */
+.formacoes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Cria dois círculos de luz com as cores do site */
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(184, 18, 189, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(80, 240, 120, 0.15) 0%, transparent 50%);
+  /* Mantém o efeito atrás do conteúdo */
+  z-index: 1;
+}
+
+/* Container para centralizar e limitar a largura do conteúdo */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Fica acima do efeito de fundo */
+}
+
+/* Título principal da seção */
+.titulo-secao {
+  /* Tamanho responsivo */
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Sombra para dar brilho ao texto */
+  text-shadow: 0 0 15px rgba(184, 18, 189, 0.6);
+}
+
+/* Texto abaixo do título */
+.subtitulo-secao {
+  text-align: center;
+  color: #c5c8e2;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+/* Grade para organizar os cartões */
+.cards-grid {
+  /* Layout responsivo: colunas automáticas */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px; /* Espaçamento entre os cartões */
+}
+
+/* Estilo base de cada cartão */
+.card-formacao {
+  position: relative;
+  background: rgba(15, 8, 35, 0.8);
+  border-radius: 12px;
+  padding: 2px;
+  transition: all 0.4s ease;
+  /* Efeito de desfoque para profundidade */
+  backdrop-filter: blur(8px);
+}
+
+/* Aumenta brilho e gira ao passar o mouse */
+.card-formacao:hover {
+  transform: translateY(-5px) rotate(2deg); /* ✅ Adicione o rotate aqui */
+}
+
+.card-formacao:hover .card-borda {
+  opacity: 1;
+  filter: blur(4px);
+}
+
+/* Efeito de borda luminosa animada */
+.card-borda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  /* Gradiente com as cores do site */
+  background: linear-gradient(45deg, #b812bd, #50f078, #b812bd);
+  background-size: 300% 300%;
+  /* Animação que move as cores */
+  animation: bordaBrilhante 6s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Animação da borda */
+@keyframes bordaBrilhante {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Aumenta brilho ao passar o mouse */
+.card-formacao:hover .card-borda {
+  opacity: 1;
+  filter: blur(4px);
+}
+
+/* Conteúdo interno do cartão */
+.card-conteudo {
+  position: relative;
+  background: #0f0823;
+  border-radius: 10px;
+  padding: 35px 25px;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center; /* ✅ ADICIONE ESTA LINHA */
+}
+/* Título dentro do cartão */
+.card-conteudo h3 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px rgba(80, 240, 120, 0.4);
+}
+
+/* Texto descritivo */
+.card-conteudo p {
+  color: #c5c8e2;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Lista de tecnologias */
+.tecnologias {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tecnologias li {
+  background: rgba(184, 18, 189, 0.2);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(184, 18, 189, 0.3);
+}
+
+/* Estilo do botão/link */
+.botao-saiba-mais {
+  display: inline-block;
+  margin: 20px auto 0 auto; /* ✅ Centraliza e dá espaço acima */
+  text-decoration: none;
+  background: linear-gradient(90deg, #b812bd, #50f078);
+  border: none;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 0 10px rgba(184, 18, 189, 0.35);
+}
+
+/* Efeito ao passar o mouse no botão */
+.botao-saiba-mais:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(80, 240, 120, 0.6);
+}
+
+
+/* Ajustes para telas menores (celulares) */
+@media (max-width: 768px) {
+  .formacoes {
+    padding: 60px 15px;
+  }
+
+  .cards-grid {
+    gap: 25px;
+  }
+}

@@ -1,0 +1,62 @@
+/* ==== ESTILOS GERAIS DO APP (seu código já existente continua aqui) ==== */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ... todo o resto do seu App.css continua normalmente ... */
+
+/* ==============================================
+   ✅ BOTÃO DO WHATSAPP - ADICIONE NO FINAL
+============================================== */
+.botao-whatsapp-flutuante {
+  /* Posição fixa no canto inferior ESQUERDO */
+  position: fixed;
+  bottom: 30px;       /* Distância da borda de baixo */
+  right: 30px;         /* Distância da borda da esquerda */
+  z-index: 9999;      /* Fica acima de tudo */
+
+  /* Tamanho e formato redondo */
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+
+  /* Estilo futurista combinando com o site */
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 15px rgba(37, 211, 102, 0.5),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+
+  /* Centraliza o ícone dentro do botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+
+  /* Animações suaves */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado do link */
+}
+
+/* Efeito de pulo/brilho constante */
+@keyframes pulsarWpp {
+  0% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); }
+  100% { box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
+}
+
+.botao-whatsapp-flutuante {
+  animation: pulsarWpp 3s ease-in-out infinite;
+}
+
+/* Efeito ao passar o mouse */
+.botao-whatsapp-flutuante:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 30px rgba(37, 211, 102, 1),
+    inset 0 0 10px rgba(255, 255, 255, 0.4);
+}

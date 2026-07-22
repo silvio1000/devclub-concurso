@@ -1,0 +1,200 @@
+/* ==============================================
+   SEÇÃO: NOSSOS TUTORES
+   Estilo futurista, alinhado com o restante do site
+============================================== */
+
+/* Estilo geral da seção */
+.tutores {
+  background: #0a041a; /* Cor de fundo escura */
+  padding: 80px 20px; /* Espaçamento interno */
+  position: relative;
+  overflow: hidden; /* Esconde o que ultrapassar os limites */
+}
+
+/* Efeito de luz suave no fundo */
+.tutores::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Cria brilhos com as cores do tema */
+  background: 
+    radial-gradient(circle at 70% 20%, rgba(184, 18, 189, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 30% 80%, rgba(80, 240, 120, 0.15) 0%, transparent 50%);
+  z-index: 1; /* Mantém atrás do conteúdo */
+}
+
+/* Container para centralizar e limitar a largura */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Fica acima do fundo */
+}
+
+/* Título principal da seção */
+.titulo-secao {
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Tamanho responsivo */
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(184, 18, 189, 0.6); /* Brilho no texto */
+}
+
+/* Texto abaixo do título */
+.subtitulo-secao {
+  text-align: center;
+  color: #c5c8e2;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+/* Grade para organizar os cartões */
+.tutores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+  gap: 100px; /* Espaçamento entre os cartões */
+}
+
+/* Estilo base de cada cartão */
+.card-tutor {
+  position: relative;
+  background: rgba(15, 8, 35, 0.8);
+  border-radius: 12px;
+  padding: 2px;
+  transition: all 0.4s ease; /* Animação suave */
+  backdrop-filter: blur(8px); /* Efeito de vidro fosco */
+}
+
+/* Camada da borda luminosa animada */
+.card-borda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  /* Gradiente com as cores do site */
+  background: linear-gradient(45deg, #b812bd, #50f078, #b812bd);
+  background-size: 300% 300%;
+  /* Animação que move as cores */
+  animation: bordaBrilhante 6s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Animação da borda */
+@keyframes bordaBrilhante {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efeito ao passar o mouse: sobe e gira levemente */
+.card-tutor:hover {
+  transform: translateY(-5px) rotate(2deg);
+}
+
+/* Aumenta o brilho da borda ao passar o mouse */
+.card-tutor:hover .card-borda {
+  opacity: 1;
+  filter: blur(4px);
+}
+
+/* Área interna do cartão */
+.card-conteudo {
+  position: relative;
+  background: #0f0823;
+  border-radius: 10px;
+  padding: 35px 25px;
+  height: 100%;
+  z-index: 2;
+  text-align: center; /* Alinha todo o conteúdo ao centro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo do círculo da foto/avatar */
+.foto-tutor {
+  width: 120px; /* Largura do círculo */
+  height: 120px; /* Altura igual para ficar redondo */
+  border-radius: 50%; /* Transforma em círculo */
+  overflow: hidden; /* Corta o que sair da borda */
+  border: 3px solid rgba(184, 18, 189, 0.5); /* Borda colorida */
+  margin-bottom: 20px; /* Espaço abaixo da foto */
+  box-shadow: 0 0 15px rgba(80, 240, 120, 0.3); /* Brilho ao redor */
+}
+
+/* Ajusta a imagem para encaixar sem distorcer */
+.foto-tutor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Preenche todo o espaço mantendo proporção */
+  display: block;
+}
+
+/* Nome do tutor */
+.card-conteudo h3 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  text-shadow: 0 0 8px rgba(80, 240, 120, 0.4);
+}
+
+/* Cargo ou especialidade */
+.cargo {
+  color: #b812bd;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* Texto de descrição */
+.descricao {
+  color: #c5c8e2;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Estilo do botão */
+.botao-saiba-mais {
+  display: inline-block;
+  margin: 0 auto; /* Centraliza o botão */
+  text-decoration: none; /* Remove o sublinhado do link */
+  background: linear-gradient(90deg, #b812bd, #50f078);
+  border: none;
+  color: #ffffff;
+  padding: 8px 18px; /* Tamanho interno do botão */
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 0 10px rgba(184, 18, 189, 0.35);
+}
+
+/* Efeito do botão ao passar o mouse */
+.botao-saiba-mais:hover {
+  transform: translateY(-2px) rotate(3deg); /* Sobe e gira levemente */
+  box-shadow: 0 0 16px rgba(80, 240, 120, 0.55); /* Aumenta o brilho */
+}
+
+/* Ajustes para telas menores (celulares) */
+@media (max-width: 768px) {
+  .tutores {
+    padding: 60px 15px;
+  }
+
+  .tutores-grid {
+    gap: 25px;
+  }
+}

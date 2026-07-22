@@ -1,0 +1,53 @@
+/* ==============================================
+   ESTILO DO LOGO COM PARTÍCULAS
+   Fonte alterada para formato mais limpo e moderno
+============================================== */
+
+/* Container principal do logo */
+.logo-container {
+  position: relative;
+  width: 220px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Área onde ficam as letras D e C */
+.logo-texto {
+  position: absolute;
+  z-index: 2; /* Fica acima das partículas */
+  font-size: 3.2rem;
+  font-weight: 700;
+  /* ✅ FONTE ALTERADA AQUI — escolhi uma sem serifa, linhas retas e limpas */
+  font-family: 'Inter', 'Roboto', 'Segoe UI', 'Arial', Helvetica, sans-serif;
+  letter-spacing: 2px; /* Ajusta o espaçamento entre as letras */
+  background: linear-gradient(90deg, #b812bd, #50f078);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(184, 18, 189, 0.4);
+}
+
+/* Canvas das partículas */
+.logo-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Fica atrás do texto */
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 180px;
+    height: 65px;
+  }
+
+  .logo-texto {
+    font-size: 2.5rem;
+  }
+}

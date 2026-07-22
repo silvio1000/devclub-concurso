@@ -1,0 +1,183 @@
+/* ==============================================
+   SEÇÃO: NOSSOS PARCEIROS
+   Mesmo estilo, cores e animações do restante do site
+   Ajustado para exibir apenas texto, sem imagens
+============================================== */
+
+/* Estilo geral da seção */
+.parceiros {
+  background: #0a041a; /* Cor de fundo escura padrão */
+  padding: 80px 20px; /* Espaçamento interno superior e lateral */
+  position: relative;
+  overflow: hidden; /* Esconde elementos que saem da área da seção */
+}
+
+/* Efeito de luz suave no fundo da seção */
+.parceiros::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Brilhos com as cores do tema */
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(184, 18, 189, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 20% 70%, rgba(80, 240, 120, 0.15) 0%, transparent 50%);
+  z-index: 1; /* Mantém o brilho atrás do conteúdo */
+}
+
+/* Container: centraliza e define largura máxima */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Coloca o conteúdo acima do brilho de fundo */
+}
+
+/* Estilo do título principal */
+.titulo-secao {
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Tamanho responsivo */
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(184, 18, 189, 0.6); /* Brilho no texto */
+}
+
+/* Texto abaixo do título */
+.subtitulo-secao {
+  text-align: center;
+  color: #c5c8e2;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  max-width: 700px;
+  margin: 0 auto 60px; /* Espaçamento inferior */
+  line-height: 1.6;
+}
+
+/* Grade que organiza os cartões */
+.parceiros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsivo */
+  gap: 100px 35px; /* Espaçamento: 50px entre linhas, 35px entre colunas */
+}
+
+/* Estilo base de cada cartão */
+.card-parceiro {
+  position: relative;
+  background: rgba(15, 8, 35, 0.8);
+  border-radius: 12px;
+  padding: 2px;
+  transition: all 0.4s ease; /* Animação suave para todos os efeitos */
+  backdrop-filter: blur(8px); /* Efeito de vidro fosco */
+}
+
+/* Camada da borda luminosa animada */
+.card-borda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  /* Gradiente com as cores do site */
+  background: linear-gradient(45deg, #b812bd, #50f078, #b812bd);
+  background-size: 300% 300%;
+  /* Animação que move as cores da borda */
+  animation: bordaBrilhante 6s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Definição da animação da borda */
+@keyframes bordaBrilhante {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efeito ao passar o mouse: cartão sobe e gira levemente */
+.card-parceiro:hover {
+  transform: translateY(-5px) rotate(1.5deg);
+}
+
+/* Aumenta o brilho da borda ao passar o mouse */
+.card-parceiro:hover .card-borda {
+  opacity: 1;
+  filter: blur(4px);
+}
+
+/* Área interna do cartão com o conteúdo */
+.card-conteudo {
+  position: relative;
+  background: #0f0823;
+  border-radius: 10px;
+  padding: 35px 25px;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Alinha todo o texto ao centro */
+}
+
+/* Nome do parceiro */
+.card-conteudo h3 {
+  color: #da46bc;
+  font-size: 1.4rem;
+  margin: 0 0 12px 0;
+  text-shadow: 0 0 8px rgba(80, 240, 120, 0.4);
+}
+
+/* Área de atuação */
+.ramo {
+  color: #b812bd;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+}
+
+/* Descrição breve do parceiro */
+.descricao {
+  color: #d318f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  flex-grow: 1; /* Faz o texto ocupar o espaço disponível */
+}
+
+/* Estilo do botão */
+.botao-conhecer {
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(90deg, #b812bd, #50f078);
+  border: none;
+  color: #0e2904;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 0 10px rgba(184, 18, 189, 0.35);
+  margin-top: auto; /* Mantém o botão sempre na parte inferior */
+}
+
+/* Efeito do botão ao passar o mouse */
+.botao-conhecer:hover {
+  transform: translateY(-2px) rotate(2deg);
+  box-shadow: 0 0 16px rgba(80, 240, 120, 0.55);
+}
+
+/* Ajustes de layout para telas menores */
+@media (max-width: 768px) {
+  .parceiros {
+    padding: 60px 15px;
+  }
+
+  .parceiros-grid {
+    gap: 35px; /* Reduz o espaço entre os cartões em telas pequenas */
+  }
+}

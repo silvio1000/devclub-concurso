@@ -1,0 +1,100 @@
+/* ==============================================
+   SEÇÃO PRINCIPAL
+============================================== */
+.hero {
+  position: relative;          /* ⚠️ OBRIGATÓRIO: define o "espaço de camadas" */
+  width: 100%;
+  height: 550px;               /* Altura total da seção */
+  overflow: hidden;           /* Esconde o que sair da área */
+  background: linear-gradient(135deg, #020215 0%, #050522 50%, #0a0328 100%);
+  margin: 0 0 60px 0;         /* Espaço para o resto da página */
+  box-sizing: border-box;
+}
+
+/* ==============================================
+   EFEITO DE PARTÍCULAS — SEMPRE ATRÁS
+============================================== */
+.hero .particle-logo {
+  position: absolute;         /* ⚠️ Tira do fluxo normal e deixa sobre o fundo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;              /* Altura do efeito */
+  z-index: 1;                 /* ⬇️ Camada BAIXA: atrás de tudo */
+  pointer-events: none;       /* Permite clicar no texto que está na frente */
+  background: transparent;
+  margin: 0;
+}
+
+/* ==============================================
+   TEXTO — SEMPRE NA FRENTE
+============================================== */
+.hero-conteudo {
+  position: relative;         /* ⚠️ OBRIGATÓRIO para usar z-index */
+  z-index: 10;                /* ⬆️ Camada ALTA: na frente das partículas */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;  /* Deixa o texto mais para baixo */
+  padding: 0 1.5rem 20px 1.5rem; /* Espaçamento inferior */
+  box-sizing: border-box;
+}
+
+.hero-titulo {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 1rem 0;
+  text-shadow:
+    0 0 8px #b812bd,
+    0 0 16px #b812bd,
+    0 0 32px rgba(184, 18, 189, 0.6),
+    0 0 50px rgba(80, 240, 120, 0.3);
+  animation: brilhoPulsante 4s ease-in-out infinite alternate;
+}
+
+.hero-subtitulo {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-weight: 300;
+  color: #e0e7ff;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin: 0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes brilhoPulsante {
+  from {
+    text-shadow:
+      0 0 8px #b812bd,
+      0 0 16px #b812bd,
+      0 0 32px rgba(184, 18, 189, 0.6),
+      0 0 50px rgba(80, 240, 120, 0.3);
+  }
+  to {
+    text-shadow:
+      0 0 12px #b812bd,
+      0 0 24px #b812bd,
+      0 0 45px rgba(184, 18, 189, 0.8),
+      0 0 70px rgba(80, 240, 120, 0.5);
+  }
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+  .hero {
+    height: 480px;
+  }
+  .hero .particle-logo {
+    height: 380px;
+  }
+  .hero-titulo {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}
