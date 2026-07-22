@@ -36,7 +36,7 @@ function Footer() {
             <div className="rodape-coluna">
               <h3 className="rodape-titulo">Links Úteis</h3>
               <ul className="rodape-lista">
-                <li><a href="#cursos" className="rodape-link">Nossos Cursos</a></li>
+                <li><a href="#formacoes" className="rodape-link">Nossas formações</a></li>
                 <li><a href="#tutores" className="rodape-link">Nossos Tutores</a></li>
                 <li><a href="#depoimentos" className="rodape-link">Depoimentos</a></li>
                 <li><a href="#parceiros" className="rodape-link">Parceiros</a></li>
