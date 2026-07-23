@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Navbar.css';
+import logo from "../../assets/dev.png";
 
 function Navbar() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -7,8 +8,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <img src="/src/assets/dev.png" className="logo" alt="Logo DevClub" />
-
+     <img src="/dev.png" alt="Logo" />
       <button
         className="menu-toggle"
         type="button"
