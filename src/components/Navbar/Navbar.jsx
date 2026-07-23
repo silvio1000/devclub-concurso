@@ -8,7 +8,11 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-    <img className="logo" src={logo} alt="Logo DevClub" />
+   <img 
+        className="logo"
+        src={logo} 
+        alt="Logo DevClub" 
+      />
       <button
         className="menu-toggle"
         type="button"
