@@ -1,189 +1,34 @@
-/* ==============================================
-   SEÇÃO: DEPOIMENTOS
-   Mesmo estilo, cores e animações do restante do site
-============================================== */
+/* Estiliza o depoimento principal, avatares, progresso e versão mobile. */
+.depoimentos { padding: 120px 0; background: radial-gradient(circle at 12% 18%, rgba(184,18,189,.16), transparent 27%), radial-gradient(circle at 88% 80%, rgba(168,255,0,.08), transparent 24%), #09050f; color: #fff; }
+.depoimentos .secao-eyebrow { color: #a8ff00; }
+.depoimentos .titulo-secao, .depoimentos .subtitulo-secao { text-align: left; margin-left: 0; }
+.depoimentos .titulo-secao { color: #fff; }
+.depoimentos .subtitulo-secao { color: rgba(255,255,255,.65); max-width: 570px; }
 
-/* Estilo geral da seção */
-.depoimentos {
-  background: #0a041a; /* Cor de fundo escura padrão */
-  padding: 80px 20px; /* Espaçamento interno superior e lateral */
-  position: relative;
-  overflow: hidden; /* Esconde elementos que saem da área da seção */
-}
+.depoimento-palco { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.7fr); gap: 55px; align-items: stretch; margin-top: 55px; }
+.historia-destaque { position: relative; overflow: hidden; padding: clamp(32px, 6vw, 70px); border-radius: 5px 58px 5px 5px; background: #210c2a; color: #fff; box-shadow: 16px 16px 0 #a8ff00; }
+.historia-destaque::after { position: absolute; content: ''; width: 380px; height: 380px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; right: -170px; bottom: -205px; }
+.historia-marca { position: absolute; top: -30px; right: 32px; color: #b812bd; font-family: Georgia, serif; font-size: 14rem; line-height: 1; opacity: .75; }
+.historia-rotulo { position: relative; margin: 0 0 35px; color: #a8ff00; font-size: .69rem; font-weight: 800; letter-spacing: .15em; }
+.historia-texto { position: relative; max-width: 690px; margin: 0; font-size: clamp(1.25rem, 2.35vw, 2.05rem); font-weight: 500; line-height: 1.42; }
+.historia-pessoa { position: relative; display: flex; gap: 14px; align-items: center; margin-top: 43px; }
+.historia-pessoa img { width: 54px; height: 54px; border: 2px solid #a8ff00; border-radius: 50%; object-fit: cover; }
+.historia-pessoa h3 { margin: 0 0 4px; font-size: 1rem; }
+.historia-pessoa p { margin: 0; color: rgba(255,255,255,.6); font-size: .82rem; }
 
-/* Efeito de luz suave no fundo da seção */
-.depoimentos::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Brilhos com as cores do tema */
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(184, 18, 189, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(80, 240, 120, 0.15) 0%, transparent 50%);
-  z-index: 1; /* Mantém o brilho atrás do conteúdo */
-}
+.historias-seletor { display: flex; flex-direction: column; justify-content: center; padding: 20px 0; }
+.historias-seletor > p:first-child { margin: 0 0 28px; color: rgba(255,255,255,.72); font-size: .7rem; font-weight: 800; letter-spacing: .1em; }
+.historias-seletor > p:first-child span { float: right; color: #a8ff00; }
+.historias-seletor > p:first-child::after { display: block; width: 100%; height: 2px; margin-top: 10px; content: ''; transform-origin: left; background: #b812bd; animation: progresso-historia 6s linear infinite; }
+.depoimento-palco.pausado .historias-seletor > p:first-child::after { animation-play-state: paused; background: #a8a0aa; }
+.historias-avatares { display: grid; gap: 3px; }
+.historias-avatares button { display: flex; align-items: center; gap: 12px; padding: 10px 0; border: 0; border-bottom: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.54); background: transparent; cursor: pointer; text-align: left; transition: .22s ease; }
+.historias-avatares img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; filter: grayscale(1); opacity: .55; transition: .22s ease; }
+.historias-avatares span { font-size: .92rem; font-weight: 700; }
+.historias-avatares button:hover, .historias-avatares button.ativo { padding-left: 10px; color: #fff; background: rgba(184,18,189,.18); }
+.historias-avatares button.ativo img, .historias-avatares button:hover img { filter: grayscale(0); opacity: 1; outline: 2px solid #a8ff00; outline-offset: 2px; }
+.historias-nota { margin: 28px 0 0; color: rgba(255,255,255,.5); font-size: .88rem; line-height: 1.6; }
 
-/* Container: centraliza e define largura máxima */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2; /* Coloca o conteúdo acima do brilho de fundo */
-}
+@keyframes progresso-historia { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-/* Estilo do título principal */
-.titulo-secao {
-  font-size: clamp(2rem, 5vw, 2.8rem); /* Tamanho responsivo */
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px rgba(184, 18, 189, 0.6); /* Brilho no texto */
-}
-
-/* Texto abaixo do título */
-.subtitulo-secao {
-  text-align: center;
-  color: #c5c8e2;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  max-width: 700px;
-  margin: 0 auto 60px; /* Espaçamento inferior */
-  line-height: 1.6;
-}
-
-/* Grade que organiza os cartões */
-.depoimentos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Layout responsivo */
-  gap: 100px 35px; /* Espaçamento: 50px entre linhas, 35px entre colunas */
-}
-
-/* Estilo base de cada cartão */
-.card-depoimento {
-  position: relative;
-  background: rgba(15, 8, 35, 0.8);
-  border-radius: 12px;
-  padding: 2px;
-  transition: all 0.4s ease; /* Animação suave para todos os efeitos */
-  backdrop-filter: blur(8px); /* Efeito de vidro fosco */
-}
-
-/* Camada da borda luminosa animada */
-.card-borda {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  /* Gradiente com as cores do site */
-  background: linear-gradient(45deg, #b812bd, #50f078, #b812bd);
-  background-size: 300% 300%;
-  /* Animação que move as cores da borda */
-  animation: bordaBrilhante 6s linear infinite;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
-/* Definição da animação da borda */
-@keyframes bordaBrilhante {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Efeito ao passar o mouse: cartão sobe e gira levemente */
-.card-depoimento:hover {
-  transform: translateY(-5px) rotate(1.5deg);
-}
-
-/* Aumenta o brilho da borda ao passar o mouse */
-.card-depoimento:hover .card-borda {
-  opacity: 1;
-  filter: blur(4px);
-}
-
-/* Área interna do cartão com o conteúdo */
-.card-conteudo {
-  position: relative;
-  background: #0f0823;
-  border-radius: 10px;
-  padding: 35px 25px;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Estilo das aspas grandes no início do texto */
-.aspas {
-  font-size: 3.5rem;
-  line-height: 1;
-  color: rgba(184, 18, 189, 0.4);
-  font-weight: bold;
-  margin-bottom: -10px;
-}
-
-/* Texto do depoimento */
-.texto-depoimento {
-  color: #e0e2f8;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 30px;
-  font-style: italic;
-}
-
-/* Área com foto e dados do aluno */
-.aluno-info {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* Espaço entre a foto e o texto */
-  margin-top: auto; /* Mantém essa parte sempre na parte inferior do cartão */
-}
-
-/* Estilo da foto do aluno em formato circular */
-.foto-aluno {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; /* Transforma em círculo */
-  overflow: hidden; /* Corta partes da imagem que saem do círculo */
-  border: 2px solid rgba(80, 240, 120, 0.5);
-  box-shadow: 0 0 10px rgba(80, 240, 120, 0.25);
-}
-
-/* Ajusta a imagem para encaixar sem distorcer */
-.foto-aluno img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Preenche todo o espaço mantendo a proporção */
-  display: block;
-}
-
-/* Nome do aluno */
-.aluno-info h4 {
-  color: #ffffff;
-  font-size: 1.1rem;
-  margin: 0 0 4px 0;
-}
-
-/* Nome do curso */
-.aluno-info .curso {
-  color: #50f078;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-/* Ajustes de layout para telas menores (celulares e tablets) */
-@media (max-width: 768px) {
-  .depoimentos {
-    padding: 60px 15px;
-  }
-
-  .depoimentos-grid {
-    gap: 35px; /* Reduz o espaço entre os cartões em telas pequenas */
-  }
-}
+@media (max-width: 760px) { .depoimentos { padding: 85px 0; } .depoimentos .secao-eyebrow, .depoimentos .titulo-secao { text-align: center; } .depoimento-palco { grid-template-columns: 1fr; gap: 38px; margin-top: 35px; } .historia-destaque { box-shadow: 9px 9px 0 #a8ff00; } .historia-rotulo { text-align: center; } .historia-marca { right: 10px; } .historias-avatares { grid-template-columns: repeat(2, 1fr); column-gap: 14px; } }

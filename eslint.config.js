@@ -1,3 +1,4 @@
+// Define regras que ajudam a encontrar erros e manter o padrão do código.
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

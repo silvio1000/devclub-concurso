@@ -14,7 +14,7 @@ html, body {
   min-height: 100vh;
 }
 /* Garante que todo o conteúdo depois da seção apareça */
-main, section, div {
+main, section {
   position: relative;
   z-index: 2; /* Valor maior que o das partículas (1) */
 }

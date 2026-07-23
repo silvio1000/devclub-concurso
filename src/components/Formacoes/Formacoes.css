@@ -76,14 +76,19 @@
   background: rgba(15, 8, 35, 0.8);
   border-radius: 12px;
   padding: 2px;
-  transition: all 0.4s ease;
+  --inclinacao-x: 0deg;
+  --inclinacao-y: 0deg;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.22s ease, box-shadow 0.3s ease;
   /* Efeito de desfoque para profundidade */
   backdrop-filter: blur(8px);
 }
 
 /* Aumenta brilho e gira ao passar o mouse */
 .card-formacao:hover {
-  transform: translateY(-5px) rotate(2deg); /* ✅ Adicione o rotate aqui */
+  transform: perspective(900px) translateY(-8px) rotateX(var(--inclinacao-x)) rotateY(var(--inclinacao-y));
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
 }
 
 .card-formacao:hover .card-borda {
@@ -204,3 +209,113 @@
     gap: 25px;
   }
 }
+
+@media (hover: none) {
+  .card-formacao:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Modo foco: uma formação por vez ganha o protagonismo. */
+@media (hover: hover) {
+  .cards-grid:has(.card-formacao:hover) .card-formacao:not(:hover) {
+    opacity: 0.52;
+    filter: saturate(0.55) brightness(0.72);
+    transform: scale(0.965);
+  }
+}
+
+.card-formacao::after {
+  content: 'TRILHA ATIVA';
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  padding: 5px 8px;
+  border: 1px solid rgba(80, 240, 120, 0.6);
+  border-radius: 4px;
+  background: rgba(10, 4, 26, 0.82);
+  color: #50f078;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.card-formacao:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tecnologias li {
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-formacao:hover .tecnologias li {
+  border-color: rgba(80, 240, 120, 0.72);
+  background: rgba(80, 240, 120, 0.14);
+  box-shadow: 0 0 12px rgba(80, 240, 120, 0.18);
+}
+
+.card-formacao:hover .tecnologias li:nth-child(2) { transition-delay: 0.06s; }
+.card-formacao:hover .tecnologias li:nth-child(3) { transition-delay: 0.12s; }
+.card-formacao:hover .tecnologias li:nth-child(4) { transition-delay: 0.18s; }
+.card-formacao:hover .tecnologias li:nth-child(5) { transition-delay: 0.24s; }
+
+.card-insight {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: #50f078 !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 0.3s ease, margin 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-formacao:hover .card-insight {
+  max-height: 48px;
+  margin: -8px 0 14px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mini experiência prática, abaixo das formações. */
+.modo-desafio {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  margin: 58px auto 0;
+  max-width: 900px;
+  padding: 2px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: linear-gradient(100deg, rgba(184,18,189,.85), rgba(80,240,120,.7), rgba(184,18,189,.85));
+  background-size: 180% 100%;
+  animation: bordaBrilhante 7s linear infinite;
+  box-shadow: 0 18px 45px rgba(0,0,0,.26);
+}
+
+.modo-desafio::before { content: ''; position: absolute; inset: -100% 65% -100% -30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transform: rotate(20deg); animation: brilhoDesafio 5s ease-in-out infinite; }
+.desafio-cabecalho, .desafio-corpo { position: relative; z-index: 1; background: #100820; }
+.desafio-cabecalho { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 13px 22px; color: #50f078; font-size: .72rem; font-weight: 800; letter-spacing: .1em; }
+.desafio-cabecalho small { color: rgba(255,255,255,.45); font-size: .61rem; }
+.desafio-corpo { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding: 24px 28px 30px; }
+.desafio-pergunta { margin: 0 0 13px; color: #fff; font-size: 1.05rem; font-weight: 700; }
+.desafio-corpo pre { margin: 0; padding: 16px; border-radius: 7px; background: #080411; color: #e9e3ee; font: .9rem/1.65 'Courier New', monospace; }
+.desafio-corpo code span { color: #d98ddd; }.desafio-corpo code i { color: #50f078; font-style: normal; }
+.desafio-acoes { min-width: 215px; }.desafio-opcoes { display: flex; gap: 8px; }
+.desafio-opcoes button { width: 57px; height: 48px; border: 1px solid rgba(255,255,255,.22); border-radius: 7px; color: #fff; background: rgba(255,255,255,.06); cursor: pointer; font-size: 1rem; font-weight: 800; transition: .2s ease; }
+.desafio-opcoes button:hover:not(:disabled) { border-color: #50f078; color: #50f078; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(80,240,120,.16); }
+.desafio-opcoes button:disabled { cursor: default; }.desafio-opcoes button.correta { color: #09130c; border-color: #50f078; background: #50f078; }.desafio-opcoes button.incorreta { border-color: #e55162; color: #e55162; }
+.desafio-retorno { margin: 14px 0 0; font-size: .78rem; line-height: 1.45; }.desafio-retorno.sucesso { color: #50f078; }.desafio-retorno.erro { color: #ff9da8; }
+.desafio-retorno button { display: block; margin-top: 7px; padding: 0; border: 0; color: #fff; background: none; cursor: pointer; text-decoration: underline; font: inherit; }
+@keyframes brilhoDesafio { 0%, 55% { transform: translateX(-160%) rotate(20deg); } 100% { transform: translateX(400%) rotate(20deg); } }
+
+@media (max-width: 700px) { .modo-desafio { margin-top: 40px; }.desafio-cabecalho { align-items: flex-start; flex-direction: column; }.desafio-corpo { grid-template-columns: 1fr; gap: 22px; padding: 20px; }.desafio-acoes { min-width: 0; }.desafio-opcoes button { flex: 1; } }

@@ -1,3 +1,4 @@
+// Cria os elementos decorativos que dão profundidade ao fundo da página.
 function Background() {
   return (
     <div 

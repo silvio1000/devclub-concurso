@@ -1,169 +1,46 @@
-// Importa a biblioteca React necessária para criar componentes
-import React from 'react';
-// Importa o arquivo de estilos exclusivo desta seção
+// Monta a rede visual usando a lista de empresas parceiras.
 import './Parceiros.css';
 
-// ==============================================
-// COMPONENTE DA SEÇÃO NOSSOS PARCEIROS
-// Apenas nomes e descrições, sem uso de imagens
-// ==============================================
+const parceiros = [
+  { nome: 'TechSolutions', area: 'Software sob medida' },
+  { nome: 'DataMind', area: 'Dados & IA' },
+  { nome: 'CloudPro', area: 'Nuvem & escala' },
+  { nome: 'DevMobile', area: 'Apps mobile' },
+  { nome: 'EducaTech', area: 'Educação tech' },
+  { nome: 'SecurityNet', area: 'Cibersegurança' },
+];
+
 function Parceiros() {
   return (
     <section id="parceiros" className="parceiros">
-      {/* Container principal: centraliza e limita a largura do conteúdo */}
       <div className="container">
-
-        {/* Título principal da seção */}
+        <p className="secao-eyebrow">CONEXÕES QUE ABREM CAMINHOS</p>
         <h2 className="titulo-secao">Nossos Parceiros</h2>
+        <p className="subtitulo-secao">Uma rede conectada à tecnologia e às oportunidades que movem o mercado.</p>
 
-        {/* Texto explicativo abaixo do título */}
-        <p className="subtitulo-secao">
-          Empresas e instituições que confiam no nosso trabalho e ajudam a abrir portas para a sua carreira
-        </p>
+        <div className="parceiros-rede" aria-label="Rede de parceiros Dev Club">
+          <svg className="rede-linhas" viewBox="0 0 1000 540" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="500" y1="270" x2="120" y2="100" />
+            <line x1="500" y1="270" x2="180" y2="420" />
+            <line x1="500" y1="270" x2="485" y2="54" />
+            <line x1="500" y1="270" x2="880" y2="100" />
+            <line x1="500" y1="270" x2="820" y2="420" />
+            <line x1="500" y1="270" x2="520" y2="500" />
+          </svg>
 
-        {/* Grade que organiza todos os cartões dos parceiros */}
-        <div className="parceiros-grid">
-
-          {/* ==============================================
-            PARCEIRO 1
-          ============================================== */}
-          <div className="card-parceiro">
-            {/* Camada responsável pelo efeito de borda luminosa animada */}
-            <div className="card-borda"></div>
-
-            {/* Área interna do cartão com todo o conteúdo */}
-            <div className="card-conteudo">
-              <h3>TechSolutions</h3>
-              <p className="ramo">Desenvolvimento de Software</p>
-              <p className="descricao">
-                Empresa especializada em sistemas personalizados e soluções tecnológicas para diversos segmentos do mercado.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
-          {/* ==============================================
-            PARCEIRO 2
-          ============================================== */}
-          <div className="card-parceiro">
-            <div className="card-borda"></div>
-            <div className="card-conteudo">
-              <h3>DataMind</h3>
-              <p className="ramo">Análise de Dados & Inteligência Artificial</p>
-              <p className="descricao">
-                Referência em tratamento de dados e criação de modelos de IA para otimização de processos empresariais.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
-          {/* ==============================================
-            PARCEIRO 3
-          ============================================== */}
-          <div className="card-parceiro">
-            <div className="card-borda"></div>
-            <div className="card-conteudo">
-              <h3>CloudPro</h3>
-              <p className="ramo">Infraestrutura em Nuvem</p>
-              <p className="descricao">
-                Soluções completas para hospedagem, segurança e escalabilidade de sistemas em plataformas de nuvem.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
-          {/* ==============================================
-            PARCEIRO 4
-          ============================================== */}
-          <div className="card-parceiro">
-            <div className="card-borda"></div>
-            <div className="card-conteudo">
-              <h3>DevMobile</h3>
-              <p className="ramo">Desenvolvimento de Aplicativos</p>
-              <p className="descricao">
-                Criação de aplicativos nativos e multiplataforma para Android e iOS, com foco em usabilidade e desempenho.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
-          {/* ==============================================
-            PARCEIRO 5
-          ============================================== */}
-          <div className="card-parceiro">
-            <div className="card-borda"></div>
-            <div className="card-conteudo">
-              <h3>EducaTech</h3>
-              <p className="ramo">Educação Profissional em Tecnologia</p>
-              <p className="descricao">
-                Instituição dedicada à formação prática de profissionais, conectando alunos com oportunidades do mercado de trabalho.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
-          {/* ==============================================
-            PARCEIRO 6
-          ============================================== */}
-          <div className="card-parceiro">
-            <div className="card-borda"></div>
-            <div className="card-conteudo">
-              <h3>SecurityNet</h3>
-              <p className="ramo">Segurança da Informação</p>
-              <p className="descricao">
-                Serviços de proteção de dados, auditoria de sistemas e prevenção contra ameaças digitais para empresas de todos os portes.
-              </p>
-              <a 
-                href="https://google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="botao-conhecer"
-              >
-                Conhecer
-              </a>
-            </div>
-          </div>
-
+          <div className="rede-centro"><span>ECOSSISTEMA</span><strong>DEV<br />CLUB</strong></div>
+          {parceiros.map((parceiro, index) => (
+            <a className={`rede-no rede-no-${index}`} key={parceiro.nome} href="https://google.com" target="_blank" rel="noreferrer">
+              <i aria-hidden="true" />
+              <strong>{parceiro.nome}</strong>
+              <span>{parceiro.area}</span>
+            </a>
+          ))}
         </div>
+        <p className="rede-instrucao">Passe pelas conexões e descubra quem caminha com a gente <span>↗</span></p>
       </div>
     </section>
   );
 }
 
-// Exporta o componente para ser usado em outras páginas do projeto
 export default Parceiros;

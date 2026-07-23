@@ -1,10 +1,14 @@
 // Importa todos os componentes normais
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Hero from './components/Hero/Hero.jsx';
+import Jornada from './components/Jornada/Jornada.jsx';
 import Formacoes from './components/Formacoes/Formacoes.jsx';
 import Tutores from './components/Tutores/Tutores.jsx';
 import Depoimentos from './components/Depoimentos/Depoimentos.jsx';
 import Parceiros from './components/Parceiros/Parceiros.jsx';
+import Carreira from './components/Carreira/Carreira.jsx';
+import ChamadaFinal from './components/ChamadaFinal/ChamadaFinal.jsx';
 import Background from './components/Background/Background.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
@@ -12,15 +16,99 @@ import Footer from './components/Footer/Footer.jsx';
 import './App.css';
 
 function App() {
+  const [mostrarAbertura, setMostrarAbertura] = useState(true);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setMostrarAbertura(false);
+      return undefined;
+    }
+
+    const temporizador = window.setTimeout(() => setMostrarAbertura(false), 2500);
+    return () => window.clearTimeout(temporizador);
+  }, []);
+
+  useEffect(() => {
+    const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const elementos = document.querySelectorAll(
+      '.formacoes .titulo-secao, .formacoes .subtitulo-secao, .formacoes .card-formacao, .tutores .titulo-secao, .tutores .subtitulo-secao, .tutores .card-tutor'
+    );
+
+    if (reduzirMovimento) {
+      elementos.forEach((elemento) => elemento.classList.add('revelado'));
+      return undefined;
+    }
+
+    elementos.forEach((elemento) => elemento.classList.add('animar-entrada'));
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('revelado');
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    elementos.forEach((elemento) => observador.observe(elemento));
+    return () => observador.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+
+    const cartoes = document.querySelectorAll('.card-formacao, .card-tutor');
+    const limpar = [];
+
+    cartoes.forEach((cartao) => {
+      const mover = (evento) => {
+        const area = cartao.getBoundingClientRect();
+        const inclinacaoY = ((evento.clientX - area.left) / area.width - 0.5) * 7;
+        const inclinacaoX = ((evento.clientY - area.top) / area.height - 0.5) * -7;
+        cartao.style.setProperty('--inclinacao-x', `${inclinacaoX}deg`);
+        cartao.style.setProperty('--inclinacao-y', `${inclinacaoY}deg`);
+      };
+      const sair = () => {
+        cartao.style.setProperty('--inclinacao-x', '0deg');
+        cartao.style.setProperty('--inclinacao-y', '0deg');
+      };
+      cartao.addEventListener('pointermove', mover);
+      cartao.addEventListener('pointerleave', sair);
+      limpar.push(() => {
+        cartao.removeEventListener('pointermove', mover);
+        cartao.removeEventListener('pointerleave', sair);
+      });
+    });
+
+    return () => limpar.forEach((remover) => remover());
+  }, []);
+
   return (
     <div className="app-container">
+      {mostrarAbertura && (
+        <div className="terminal-abertura" role="status" aria-label="Inicializando Dev Club">
+          <div className="terminal-janela">
+            <div className="terminal-topo"><span /><span /><span /><p>devclub://inicializacao</p></div>
+            <div className="terminal-conteudo">
+              <p className="terminal-linha linha-1"><span>&gt;</span> conectando futuros desenvolvedores</p>
+              <p className="terminal-linha linha-2"><span>✓</span> trilhas de aprendizado carregadas</p>
+              <p className="terminal-linha linha-3"><span>✓</span> comunidade online</p>
+              <p className="terminal-linha linha-4"><span>✓</span> oportunidade detectada</p>
+              <div className="terminal-progresso"><i /></div>
+              <p className="terminal-pronto">DEV CLUB PRONTO<span>_</span></p>
+            </div>
+          </div>
+        </div>
+      )}
       <Background />
       <Navbar />
       <Hero />
+      <Jornada />
       <Formacoes />
       <Tutores />
       <Depoimentos />
       <Parceiros />
+      <Carreira />
+      <ChamadaFinal />
       <Footer />
 
       {/* 

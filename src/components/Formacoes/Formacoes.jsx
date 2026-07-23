@@ -39,6 +39,7 @@ function Formacoes() {
                 <li>React</li>
                 <li>Node.js</li>
               </ul>
+              <p className="card-insight">Projeto prático para começar seu portfólio.</p>
               
               {/* Botão que leva para página externa */}
               <a 
@@ -65,6 +66,7 @@ function Formacoes() {
                 <li>APIs REST</li>
                 <li>Firebase</li>
               </ul>
+              <p className="card-insight">Construa uma ideia e leve-a para o bolso das pessoas.</p>
               <a 
                 href="https://google.com" 
                 target="_blank" 
@@ -89,6 +91,7 @@ function Formacoes() {
                 <li>SQL</li>
                 <li>Power BI</li>
               </ul>
+              <p className="card-insight">Transforme dados em decisões que geram impacto.</p>
               <a 
                 href="https://google.com" 
                 target="_blank" 
@@ -101,6 +104,7 @@ function Formacoes() {
           </div>
 
         </div>
+
       </div>
     </section>
   );
