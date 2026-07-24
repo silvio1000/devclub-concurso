@@ -1,10 +1,14 @@
 // Banner inicial: alterna entre o programador em pé e sentado ao passar o mouse.
+import { useState } from 'react';
 import heroProgramador from '../../assets/hero-programador-formacoes.png';
 import heroProgramadorEmPe from '../../assets/hero-programador-em-pe-depoimento.png';
 import Impacto from '../Impacto/Impacto.jsx';
 import './Hero.css';
 
 function Hero() {
+  // No celular, cada toque alterna manualmente entre as duas imagens.
+  const [sentadoMobile, setSentadoMobile] = useState(false);
+
   return (
     <section id="inicio" className="hero">
       <div className="hero-codigo" aria-hidden="true">
@@ -14,7 +18,19 @@ function Hero() {
         <span>carreira.proximoNivel();</span>
         <span>export default seuFuturo;</span>
       </div>
-      <div className="hero-visual" role="img" aria-label="Pessoa programando em um computador cercada por código">
+      <div
+        className={`hero-visual ${sentadoMobile ? 'hero-visual--sentado' : ''}`}
+        role="button"
+        tabIndex="0"
+        aria-label={sentadoMobile ? 'Mostrar programador em pé' : 'Mostrar programador sentado'}
+        onClick={() => setSentadoMobile((estadoAtual) => !estadoAtual)}
+        onKeyDown={(evento) => {
+          if (evento.key === 'Enter' || evento.key === ' ') {
+            evento.preventDefault();
+            setSentadoMobile((estadoAtual) => !estadoAtual);
+          }
+        }}
+      >
         <img className="hero-ilustracao hero-ilustracao--sentado" src={heroProgramador} alt="" />
         <img className="hero-ilustracao hero-ilustracao--em-pe" src={heroProgramadorEmPe} alt="" />
       </div>
